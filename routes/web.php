@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\KepulanganUmroh;
 use App\Http\Controllers\KepulanganUmrohController;
-
+use App\Http\Controllers\PortfolioController;
+use App\Models\Portfolio;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,7 @@ use App\Http\Controllers\KepulanganUmrohController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PortfolioController::class, 'index']);
 
 Route::get('/kepulangan', function () {
     $query = KepulanganUmroh::query();
@@ -31,4 +30,3 @@ Route::get('/kepulangan', function () {
 
     return view('kepulangan.index', compact('kepulanganUmrohs'));
 });
-
